@@ -126,7 +126,7 @@ def process_text_detection(bucket, document):
 def main():
 
     bucket = 'content-moderation-jt-london'
-    document = 'adobe_text.png'
+    document = 'street-sign.jpg'
     block_count=process_text_detection(bucket,document)
     print("Blocks detected: " + str(block_count))
     
