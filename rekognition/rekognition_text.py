@@ -24,7 +24,7 @@ def detect_text(photo, bucket):
 def main():
 
     bucket='content-moderation-jt-london'
-    photo='tencent_with_text.jpg'
+    photo='street-sign.jpg'
     text_count=detect_text(photo,bucket)
     print("Text detected: " + str(text_count))
 

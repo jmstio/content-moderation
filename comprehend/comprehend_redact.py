@@ -10,7 +10,7 @@ response = client.start_pii_entities_detection_job(
     },
     OutputDataConfig={
         'S3Uri': 's3://content-moderation-jt-london',
-        'KmsKeyId': 'arn:aws:kms:eu-west-2:858545927766:alias/content-moderation-s3-pii-redaction'
+        #'KmsKeyId': 'arn:aws:kms:eu-west-2:858545927766:alias/content-moderation-s3-pii-redaction'
     },
     Mode='ONLY_REDACTION',
     RedactionConfig={
@@ -21,7 +21,7 @@ response = client.start_pii_entities_detection_job(
         'MaskCharacter': '*'
     },
     DataAccessRoleArn='arn:aws:iam::858545927766:role/content-moderation-for-s3',
-    JobName='content-moderation-redaction',
+    JobName='content-moderation-redaction-2',
     LanguageCode='en',
     #ClientRequestToken='string'
 )

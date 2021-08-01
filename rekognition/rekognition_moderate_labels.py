@@ -7,7 +7,13 @@ def moderate_image(photo, bucket):
 
     client=boto3.client('rekognition')
 
-    response = client.detect_moderation_labels(Image={'S3Object':{'Bucket':bucket,'Name':photo}})
+    response = client.detect_moderation_labels(Image={'S3Object':{'Bucket':bucket,'Name':photo}},
+    HumanLoopConfig={ \
+            'HumanLoopName': 'image-review-4', \
+            'FlowDefinitionArn': "arn:aws:sagemaker:eu-west-2:858545927766:flow-definition/content-moderation", \
+            'DataAttributes': {'ContentClassifiers': ['FreeOfPersonallyIdentifiableInformation','FreeOfAdultContent']}
+         }
+    )
 
     print('Detected labels for ' + photo)    
     for label in response['ModerationLabels']:
@@ -19,7 +25,7 @@ def moderate_image(photo, bucket):
 
 def main():
     bucket='content-moderation-jt-london'
-    photo='man-woman-beach.jpg'
+    photo='riot.jpg'
     label_count=moderate_image(photo, bucket)
     print("Labels detected: " + str(label_count))
 
